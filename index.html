@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prototyping</title>
+    <style>
+
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone {
+            position: relative;
+            overflow: hidden;
+            width: 411px;
+            height: 730px;
+        }
+
+        #back {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            width: 2000px;
+            transition: left 0.5s ease;
+        }
+
+        #back.back1 {
+            left: 0px;
+        }
+        #back.back2 {
+            left: -411px;
+        }
+        #back.back3 {
+            left: -822px;
+        }
+        #back.back4 {
+            left: -1233px;
+        }
+
+        .card {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 411px;
+            height: 730px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card1 {
+            background-image: url('back1.jpg');
+        }
+        .card2 {
+            background-image: url('back2.jpg');
+        }
+        .card3 {
+            background-image: url('back3.jpg');
+        }
+        .card4 {
+            background-image: url('back4.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div class="phone">
+        <div id="back">
+            <div class="card card1">
+                <img src="sqrl_blue.svg" width="250"/>
+            </div>
+            <div class="card card2">
+                <img src="sqrl_red.svg" width="250"/>
+            </div>
+            <div class="card card3">
+                <img src="sqrl_green.svg" width="250"/>
+            </div>
+            <div class="card card4">
+                <img src="sqrl_pink.svg" width="250"/>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var currentBack = 1;
+        var backElement = document.getElementById('back');
+
+        window.addEventListener("keydown", (e) => {
+            if(e.keyCode == 37) {
+                if(currentBack < 2) return;
+                currentBack--;
+            }
+            if(e.keyCode == 39) {
+                if(currentBack > 3) return;
+                currentBack++;
+            }
+            backElement.className = 'back' + currentBack;
+        });
+    </script>
+</body>
+</html>
